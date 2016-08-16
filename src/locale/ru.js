@@ -28,7 +28,7 @@ function relativeTimeWithPlural(number, withoutSuffix, key) {
 var monthsParse = [/^янв/i, /^фев/i, /^мар/i, /^апр/i, /^ма[йя]/i, /^июн/i, /^июл/i, /^авг/i, /^сен/i, /^окт/i, /^ноя/i, /^дек/i];
 
 // http://new.gramota.ru/spravka/rules/139-prop : § 103
-moment.defineLocale('ru', {
+export default moment.defineLocale('ru', {
     // CLDR data:          http://www.unicode.org/cldr/charts/28/summary/ru.html#1753
     months : {
         format: 'января_февраля_марта_апреля_мая_июня_июля_августа_сентября_октября_ноября_декабря'.split('_'),

@@ -27,7 +27,7 @@ function translate(number, withoutSuffix, key) {
     }
 }
 
-moment.defineLocale('pl', {
+export default moment.defineLocale('pl', {
     months : function (momentToFormat, format) {
         if (format === '') {
             // Hack: if format empty we know this is used to generate

@@ -62,7 +62,7 @@ function translate(number, withoutSuffix, key, isFuture) {
     }
 }
 
-moment.defineLocale('cs', {
+export default moment.defineLocale('cs', {
     months : months,
     monthsShort : monthsShort,
     monthsParse : (function (months, monthsShort) {

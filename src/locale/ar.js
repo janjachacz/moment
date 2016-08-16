@@ -61,7 +61,7 @@ var symbolMap = {
     'كانون الأول ديسمبر'
 ];
 
-moment.defineLocale('ar', {
+export default moment.defineLocale('ar', {
     months : months,
     monthsShort : months,
     weekdays : 'الأحد_الإثنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت'.split('_'),

@@ -63,7 +63,7 @@ function translate(number, withoutSuffix, key, isFuture) {
     }
 }
 
-moment.defineLocale('sk', {
+export default moment.defineLocale('sk', {
     months : months,
     monthsShort : monthsShort,
     weekdays : 'nedeľa_pondelok_utorok_streda_štvrtok_piatok_sobota'.split('_'),

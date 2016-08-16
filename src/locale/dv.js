@@ -27,7 +27,7 @@ var months = [
     'ހޮނިހިރު'
 ];
 
-moment.defineLocale('dv', {
+export default moment.defineLocale('dv', {
     months : months,
     monthsShort : months,
     weekdays : weekdays,
