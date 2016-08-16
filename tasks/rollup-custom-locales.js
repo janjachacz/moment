@@ -49,12 +49,12 @@ module.exports = function (grunt) {
             var writeLocales = values[0].write({
                 format: 'umd',
                 moduleName: 'locales',
-                dest: 'build/umd/min/locales' + (locales) ? '.custom' : '' + '.js'
+                dest: 'build/umd/min/locales' + (locales ? '.custom' : '') + '.js'
             });
             var writeMomentLocales = values[1].write({
                 format: 'umd',
                 moduleName: 'moment',
-                dest: 'build/umd/min/moment-with-locales' + (locales) ? '.custom' : '' + '.js'
+                dest: 'build/umd/min/moment-with-locales' + (locales ? '.custom' : '') + '.js'
             });
             Promise.all([writeMomentLocales]).then(done, function(val) {
                 console.log(val);
@@ -80,12 +80,12 @@ module.exports = function (grunt) {
         function composeLocaleFile(files, withMoment) {
             var importCode = files.map(function (file) {
                     var identifier = path.basename(file, '.js').replace('-', '_');
-                   // var fileNoExt = file.replace('.js', '');
+                    // var fileNoExt = file.replace('.js', '');
                     return 'import ' + identifier + ' from "../../' + file + '";';
                 }).join('\n'),
                 code = (withMoment) ? 'import moment from "../../src/moment.js";\n\n' +
                     importCode : importCode,
-                filePath = (withMoment) ? 'build/temp/moment-with-locales.custom.js' : 'build/temp/locales.custom.js'
+                filePath = (withMoment) ? 'build/temp/moment-with-locales.custom.js' : 'build/temp/locales.custom.js';
             grunt.file.write(filePath, code);
             return filePath;
         }
