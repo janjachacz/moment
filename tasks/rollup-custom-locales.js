@@ -7,7 +7,7 @@ module.exports = function (grunt) {
     grunt.task.registerTask('rollup-custom-locales', 'bundle custom locales', function (locales) {
         var done = this.async();
 
-        console.log(locales);
+        console.log('bundling ' + (locales || 'all') + ' locales');
         var localeFiles = (locales) ? getLocaleFiles(locales) :
             grunt.file.expand({ filter: "isFile", cwd: "src/locale" }, ["*"]).map(function (file) {
                 return 'src/locale/' + file;
