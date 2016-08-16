@@ -1,6 +1,6 @@
 var rollup = require('rollup');
 var babelPlugin = require('rollup-plugin-babel');
-var multiEntry = require('rollup-plugin-multi-entry').default;
+var multiEntry = require('rollup-plugin-multi-entry');
 
 function testFiles(grunt) {
     var only = grunt.option('only') || '{moment,locale}/*';
