@@ -25,7 +25,7 @@ module.exports = function (grunt) {
             options: {
                 exports: 'none',
                 external: [
-                    path.resolve(__dirname, '../src/moment.js')
+                    ['moment', path.resolve(__dirname, '../src/moment.js')]
                 ],
                 globals: {
                     '../moment': 'moment'
