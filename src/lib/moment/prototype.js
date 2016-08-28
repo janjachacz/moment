@@ -5,7 +5,6 @@ var proto = Moment.prototype;
 
 import { add, subtract } from './add-subtract';
 import { calendar, getCalendarFormat } from './calendar';
-import { clone } from './clone';
 import { isBefore, isBetween, isSame, isAfter, isSameOrAfter, isSameOrBefore } from './compare';
 import { diff } from './diff';
 import { format, toString, toISOString } from './format';
@@ -138,7 +137,7 @@ proto.zoneName = getZoneName;
 
 // Deprecations
 import { deprecate } from '../utils/deprecate';
-proto.clone  = deprecate('clone does nothing in Moment v3.x because the API is now immutable. Use moment(instance) to make a copy.', function() { return this; });
+proto.clone  = deprecate('clone does nothing in Moment v3.x because the API is now immutable. Use moment(instance) to make a copy.', function clone() { return this; });
 proto.dates  = deprecate('dates accessor is deprecated. Use date instead.', wrap(getSetDayOfMonth));
 proto.max    = deprecate('moment().max() is deprecated. Use moment.min() instead (notice lack of parentheses).', prototypeMax);
 proto.min    = deprecate('moment().min() is deprecated. Use moment.max() instead (notice lack of parentheses).', prototypeMin);

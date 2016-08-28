@@ -6,11 +6,11 @@ hooks.defaultFormat = 'YYYY-MM-DDTHH:mm:ssZ';
 hooks.defaultFormatUtc = 'YYYY-MM-DDTHH:mm:ss[Z]';
 
 export function toString () {
-    return this.clone().locale('en').format('ddd MMM DD YYYY HH:mm:ss [GMT]ZZ');
+    return this.locale('en').format('ddd MMM DD YYYY HH:mm:ss [GMT]ZZ');
 }
 
 export function toISOString () {
-    var m = this.clone().utc();
+    var m = this.utc();
     if (0 < m.year() && m.year() <= 9999) {
         if (isFunction(Date.prototype.toISOString)) {
             // native implementation is ~50x faster, use it when we can
