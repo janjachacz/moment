@@ -110,21 +110,22 @@ export function getSetOffset (input, keepLocalTime) {
         if (!this._isUTC && keepLocalTime) {
             localAdjust = getDateOffset(this);
         }
-        this._offset = input;
-        this._isUTC = true;
+		var ret = this;
+        ret._offset = input;
+        ret._isUTC = true;
         if (localAdjust != null) {
-            this.add(localAdjust, 'm');
+            ret = ret.add(localAdjust, 'm');
         }
         if (offset !== input) {
-            if (!keepLocalTime || this._changeInProgress) {
-                addSubtract(this, createDuration(input - offset, 'm'), 1, false);
-            } else if (!this._changeInProgress) {
-                this._changeInProgress = true;
-                hooks.updateOffset(this, true);
-                this._changeInProgress = null;
+            if (!keepLocalTime || ret._changeInProgress) {
+                addSubtract(ret, createDuration(input - offset, 'm'), 1, false);
+            } else if (!ret._changeInProgress) {
+                ret._changeInProgress = true;
+                hooks.updateOffset(ret, true);
+                ret._changeInProgress = null;
             }
         }
-        return this;
+        return ret;
     } else {
         return this._isUTC ? offset : getDateOffset(this);
     }
@@ -149,15 +150,16 @@ export function setOffsetToUTC (keepLocalTime) {
 }
 
 export function setOffsetToLocal (keepLocalTime) {
-    if (this._isUTC) {
-        this.utcOffset(0, keepLocalTime);
-        this._isUTC = false;
+	var ret = this;
+    if (ret._isUTC) {
+        ret.utcOffset(0, keepLocalTime);
+        ret._isUTC = false;
 
         if (keepLocalTime) {
-            this.subtract(getDateOffset(this), 'm');
+            ret.subtract(getDateOffset(ret), 'm');
         }
     }
-    return this;
+    return ret;
 }
 
 export function setOffsetToParsedOffset () {
