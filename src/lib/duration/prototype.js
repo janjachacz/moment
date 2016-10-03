@@ -1,5 +1,5 @@
 import { Duration } from './constructor';
-import { durationWrap as wrap } from '../utils/wrap';
+import wrap from '../utils/wrap';
 
 var proto = Duration.prototype;
 
@@ -13,8 +13,8 @@ import { toISOString } from './iso-string';
 import { lang, locale, localeData } from '../moment/locale';
 
 proto.abs            = abs;
-proto.add            = wrap(add);
-proto.subtract       = wrap(subtract);
+proto.add            = wrap(Duration, add);
+proto.subtract       = wrap(Duration, subtract);
 proto.as             = as;
 proto.asMilliseconds = asMilliseconds;
 proto.asSeconds      = asSeconds;
@@ -27,23 +27,23 @@ proto.asYears        = asYears;
 proto.valueOf        = valueOf;
 proto._bubble        = bubble;
 proto.get            = get;
-proto.milliseconds   = wrap(milliseconds);
-proto.seconds        = wrap(seconds);
-proto.minutes        = wrap(minutes);
-proto.hours          = wrap(hours);
-proto.days           = wrap(days);
-proto.weeks          = wrap(weeks);
-proto.months         = wrap(months);
-proto.years          = wrap(years);
+proto.milliseconds   = wrap(Duration, milliseconds);
+proto.seconds        = wrap(Duration, seconds);
+proto.minutes        = wrap(Duration, minutes);
+proto.hours          = wrap(Duration, hours);
+proto.days           = wrap(Duration, days);
+proto.weeks          = wrap(Duration, weeks);
+proto.months         = wrap(Duration, months);
+proto.years          = wrap(Duration, years);
 proto.humanize       = humanize;
 proto.toISOString    = toISOString;
 proto.toString       = toISOString;
 proto.toJSON         = toISOString;
-proto.locale         = wrap(locale);
+proto.locale         = wrap(Duration, locale);
 proto.localeData     = localeData;
 
 // Deprecations
 import { deprecate } from '../utils/deprecate';
 
 proto.toIsoString = deprecate('toIsoString() is deprecated. Please use toISOString() instead (notice the capitals)', toISOString);
-proto.lang = deprecate('duration.lang() is deprecated. Use locale() or localeData() instead.', wrap(lang));
+proto.lang = deprecate('duration.lang() is deprecated. Use locale() or localeData() instead.', wrap(Duration, lang));

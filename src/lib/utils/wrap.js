@@ -1,17 +1,6 @@
-import { Moment } from '../moment/constructor';
-import { Duration } from '../duration/constructor';
-export { wrap, durationWrap };
-
-function wrap(fn) {
+export default function wrap(Type, fn) {
     return function() {
-        var m = arguments.length ? new Moment(this) : this;
-        return fn.apply(m, arguments);
-    };
-}
-
-function durationWrap(fn) {
-    return function() {
-        var m = arguments.length ? new Duration(this) : this;
+        var m = arguments.length ? new Type(this) : this;
         return fn.apply(m, arguments);
     };
 }
